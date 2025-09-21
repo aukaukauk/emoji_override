@@ -6,13 +6,6 @@
     if (!root) return;
     if (enabled) root.classList.add('noto-emoji-enabled');
     else root.classList.remove('noto-emoji-enabled');
-    try {
-      if (enabled) {
-        window.__NotoEmoji && window.__NotoEmoji.start && window.__NotoEmoji.start();
-      } else {
-        window.__NotoEmoji && window.__NotoEmoji.stop && window.__NotoEmoji.stop();
-      }
-    } catch (e) {}
   }
 
   try {
@@ -28,6 +21,7 @@
       apply(Boolean(changes[KEY].newValue));
     });
   } catch (e) {
-    // 在某些限制环境下，尽量不影响页面
+    // 忽略潜在异常，避免影响页面
   }
 })();
+

@@ -14,10 +14,17 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["scripts/emoji-wrap.js", "scripts/toggle.js"],
+      "js": ["scripts/toggle.js"],
       "css": ["styles/emoji.css"],
       "run_at": "document_start"
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/NotoColorEmoji.ttf"
+      ],
+      "matches": ["<all_urls>"]
+    }
   ]
-  
 }

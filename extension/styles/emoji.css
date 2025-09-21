@@ -1,18 +1,55 @@
-/*
-  仅针对 emoji 本身应用 Noto Emoji，不再全局覆盖字体，避免影响页面其它文本。
-  依赖内容脚本将 emoji 文本用 <span class="noto-emoji-glyph"> 包裹。
-  要求系统已安装 “Noto Color Emoji”。
+﻿/*
+  强制在页面中优先使用 Google Noto Emoji 渲染 emoji。
+  说明：
+  - 首先尝试使用本机已安装的 “Noto Color Emoji”。
+  - 若本机未安装，则回退到扩展内置字体（需将 TTF 放到 fonts/NotoColorEmoji.ttf）。
+  - 通过 unicode-range 限定仅对 emoji 码位生效，避免影响其它文本渲染。
 */
 
-html.noto-emoji-enabled .noto-emoji-glyph {
-  font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+/* 优先尝试本机字体（如果用户在系统已安装） */
+@font-face {
+  font-family: 'NotoColorEmojiLocal';
+  src: local('Noto Color Emoji'), local('NotoColorEmoji');
+  font-display: swap;
+  /* Emoji 相关范围（含 ZWJ/VS、肤色修饰符等） */
+  unicode-range:
+    U+200D,            /* ZWJ */
+    U+FE0E-FE0F,       /* Variation Selectors */
+    U+1F1E6-1F1FF,     /* Regional Indicator */
+    U+1F3FB-1F3FF,     /* Skin tones */
+    U+2600-26FF,       /* Misc Symbols */
+    U+2700-27BF,       /* Dingbats */
+    U+1F000-1F02F,     /* Mahjong */
+    U+1F0A0-1F0FF,     /* Playing Cards */
+    U+1F100-1F1FF,     /* Enclosed Alphanum */
+    U+1F200-1F2FF,     /* Enclosed Ideographic */
+    U+1F300-1F5FF,     /* Misc Symbols & Pictographs */
+    U+1F600-1F64F,     /* Emoticons */
+    U+1F680-1F6FF,     /* Transport & Map */
+    U+1F700-1F77F,     /* Alchemical */
+    U+1F780-1F7FF,     /* Geometric Ext */
+    U+1F800-1F8FF,     /* Supplemental Arrows-C etc */
+    U+1F900-1F9FF,     /* Supplemental Symbols & Pictographs */
+    U+1FA00-1FAFF,     /* Chess etc */
+    U+1FB00-1FBFF;     /* Symbols for Legacy Computing */
 }
 
-/* 避免代码块等区域被包裹时视觉异常（通常不会包裹这些区域） */
-pre .noto-emoji-glyph,
-code .noto-emoji-glyph,
-kbd .noto-emoji-glyph,
-samp .noto-emoji-glyph,
-tt .noto-emoji-glyph {
-  font-family: inherit !important;
+/* 全局覆盖：把 emoji 字体放在最前，非 emoji 字符不会受影响（因 unicode-range 限定） */
+/* 避免影响代码块等常见等宽区域 */
+/* 通过开关类控制是否启用 */
+html.noto-emoji-enabled, html.noto-emoji-enabled body, html.noto-emoji-enabled *:not(code):not(pre):not(kbd):not(samp):not(tt) {
+  font-family:
+    'NotoColorEmojiLocal',
+    'NotoColorEmojiExt',
+    /* 其余按常见系统字体与 emoji 回退 */
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif !important;
 }
