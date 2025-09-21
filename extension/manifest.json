@@ -1,28 +1,50 @@
 ﻿{
-  "manifest_version": 3,
-  "name": "Noto Emoji Override",
-  "description": "Prefer Google's Noto Emoji on all pages to replace Windows' default emoji appearance.",
-  "version": "0.2.0",
-  "permissions": ["storage", "tabs"],
-  "action": {
-    "default_title": "Noto Emoji Override",
-    "default_popup": "popup/popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["scripts/emoji-wrap.js", "scripts/toggle.js"],
-      "css": ["styles/emoji.css"],
-      "run_at": "document_start"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": [
-        "fonts/Noto-COLRv1.ttf",
-        "fonts/NotoColorEmoji.ttf"
-      ],
-      "matches": ["<all_urls>"]
-    }
-  ]
+    "manifest_version":  3,
+    "name":  "Noto Emoji Override",
+    "description":  "Prefer Google\u0027s Noto Emoji on all pages to replace Windows\u0027 default emoji appearance.",
+    "version":  "1.0.0",
+    "permissions":  [
+                        "storage",
+                        "tabs"
+                    ],
+    "action":  {
+                   "default_title":  "Noto Emoji Override",
+                   "default_popup":  "popup/popup.html",
+                   "default_icon":  {
+                                        "24":  "icons/icon32.png",
+                                        "16":  "icons/icon32.png",
+                                        "32":  "icons/icon32.png"
+                                    }
+               },
+    "content_scripts":  [
+                            {
+                                "matches":  [
+                                                "\u003call_urls\u003e"
+                                            ],
+                                "js":  [
+                                           "scripts/emoji-wrap.js",
+                                           "scripts/toggle.js"
+                                       ],
+                                "css":  [
+                                            "styles/emoji.css"
+                                        ],
+                                "run_at":  "document_start"
+                            }
+                        ],
+    "web_accessible_resources":  [
+                                     {
+                                         "resources":  [
+                                                           "fonts/Noto-COLRv1.ttf",
+                                                           "fonts/NotoColorEmoji.ttf"
+                                                       ],
+                                         "matches":  [
+                                                         "\u003call_urls\u003e"
+                                                     ]
+                                     }
+                                 ],
+    "short_name":  "Emoji Override",
+    "icons":  {
+                  "128":  "icons/icon128.png",
+                  "32":  "icons/icon32.png"
+              }
 }
