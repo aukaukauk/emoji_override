@@ -17,11 +17,28 @@ function getEnabled() {
   });
 }
 
+function render(btn, statusEl, enabled) {
+  btn.classList.toggle('enabled', enabled);
+  btn.classList.toggle('disabled', !enabled);
+  btn.textContent = enabled ? 'Disable Noto Emoji' : 'Enable Noto Emoji';
+  if (statusEl) statusEl.textContent = enabled ? 'Enabled' : 'Disabled';
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-  const toggle = document.getElementById('toggle');
-  toggle.checked = await getEnabled();
-  toggle.addEventListener('change', async () => {
-    await setEnabled(toggle.checked);
+  const btn = document.getElementById('toggleBtn');
+  const statusEl = document.getElementById('status');
+  let enabled = await getEnabled();
+  render(btn, statusEl, enabled);
+
+  btn.addEventListener('click', async () => {
+    enabled = !enabled;
+    render(btn, statusEl, enabled);
+    await setEnabled(enabled);
+  });
+
+  chrome.storage.onChanged.addListener((changes, area) => {
+    if (area !== 'sync' || !changes[KEY]) return;
+    enabled = Boolean(changes[KEY].newValue);
+    render(btn, statusEl, enabled);
   });
 });
-

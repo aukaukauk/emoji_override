@@ -3,18 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Noto Emoji 开关</title>
+    <title>Noto Emoji Toggle</title>
     <link rel="stylesheet" href="popup.css" />
   </head>
   <body>
     <main>
-      <label class="switch">
-        <input id="toggle" type="checkbox" />
-        <span class="slider"></span>
-      </label>
-      <span class="label">启用 Noto Emoji</span>
+      <button id="toggleBtn" type="button">…</button>
+      <span id="status" aria-live="polite"></span>
     </main>
     <script src="popup.js"></script>
   </body>
   </html>
-

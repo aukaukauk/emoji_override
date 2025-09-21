@@ -37,7 +37,7 @@
 /* 全局覆盖：把 emoji 字体放在最前，非 emoji 字符不会受影响（因 unicode-range 限定） */
 /* 避免影响代码块等常见等宽区域 */
 /* 通过开关类控制是否启用 */
-html.noto-emoji-enabled, html.noto-emoji-enabled body, html.noto-emoji-enabled *:not(code):not(pre):not(kbd):not(samp):not(tt) {
+html.noto-emoji-enabled, html.noto-emoji-enabled body, html.noto-emoji-enabled *:not(code):not(pre):not(kbd):not(samp):not(tt):not(textarea):not(input) {
   font-family:
     'NotoColorEmojiLocal',
     'NotoColorEmojiExt',
@@ -50,6 +50,6 @@ html.noto-emoji-enabled, html.noto-emoji-enabled body, html.noto-emoji-enabled *
     Arial,
     'Apple Color Emoji',
     'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    sans-serif !important;
+  'Segoe UI Symbol',
+  sans-serif !important;
 }
