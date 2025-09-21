@@ -1,10 +1,20 @@
-:root { color-scheme: light dark; }
-body { margin: 0; padding: 10px 12px; font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-main { display: flex; align-items: center; gap: 10px; }
+﻿:root { color-scheme: light dark; }
+body { margin: 0; padding: 12px 14px; font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; min-width: 260px; }
+main { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; align-items: center; gap: 12px; }
+.site-row { align-items: flex-start; }
+.site-info { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+#hostName { font-weight: 600; word-break: break-word; }
+#siteState { font-size: 12px; opacity: 0.7; }
 
-#toggleBtn { padding: 6px 10px; border: 1px solid #888; border-radius: 6px; background: #f2f2f2; cursor: pointer; }
-#toggleBtn:hover { background: #e8e8e8; }
+button { padding: 6px 10px; border: 1px solid #888; border-radius: 6px; background: #f2f2f2; cursor: pointer; transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease; }
+button:hover { background: #e8e8e8; }
+button:disabled { cursor: not-allowed; opacity: 0.6; background: #f6f6f6; }
+
 #toggleBtn.enabled { background: #4caf50; color: #fff; border-color: #4caf50; }
 #toggleBtn.disabled { background: #d9534f; color: #fff; border-color: #d9534f; }
+#siteBtn.blocked { background: #f0ad4e; color: #fff; border-color: #f0ad4e; }
 
-#status { margin-left: 6px; opacity: .8; }
+#status { opacity: 0.8; }
+.hint { margin: 0; font-size: 12px; opacity: 0.65; display: none; }
+.hint.visible { display: block; }

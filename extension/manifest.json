@@ -3,7 +3,7 @@
   "name": "Noto Emoji Override",
   "description": "Prefer Google's Noto Emoji on all pages to replace Windows' default emoji appearance.",
   "version": "0.2.0",
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "action": {
     "default_title": "Noto Emoji Override",
     "default_popup": "popup/popup.html"
@@ -14,6 +14,15 @@
       "js": ["scripts/emoji-wrap.js", "scripts/toggle.js"],
       "css": ["styles/emoji.css"],
       "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/Noto-COLRv1.ttf",
+        "fonts/NotoColorEmoji.ttf"
+      ],
+      "matches": ["<all_urls>"]
     }
   ]
 }

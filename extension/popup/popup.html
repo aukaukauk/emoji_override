@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="zh-CN">
+﻿<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,9 +8,19 @@
   </head>
   <body>
     <main>
-      <button id="toggleBtn" type="button">…</button>
-      <span id="status" aria-live="polite"></span>
+      <div class="row">
+        <button id="toggleBtn" type="button">Toggle</button>
+        <span id="status" aria-live="polite"></span>
+      </div>
+      <div class="row site-row">
+        <div class="site-info">
+          <span id="hostName">-</span>
+          <span id="siteState"></span>
+        </div>
+        <button id="siteBtn" type="button">Block This Site</button>
+      </div>
+      <p id="siteHint" class="hint">Site blocking is not available on this page.</p>
     </main>
     <script src="popup.js"></script>
   </body>
-  </html>
+</html>
