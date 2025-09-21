@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Noto Emoji Override",
+  "description": "在所有网页中优先使用 Google 的 Noto Emoji 字体渲染表情符号，替换 Windows 自带的表情。",
+  "version": "0.2.0",
+
+  "permissions": ["storage"],
+
+  "action": {
+    "default_title": "Noto Emoji Override",
+    "default_popup": "popup/popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/emoji-wrap.js", "scripts/toggle.js"],
+      "css": ["styles/emoji.css"],
+      "run_at": "document_start"
+    }
+  ]
+  
+}

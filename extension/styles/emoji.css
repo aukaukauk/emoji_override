@@ -1,0 +1,18 @@
+/*
+  仅针对 emoji 本身应用 Noto Emoji，不再全局覆盖字体，避免影响页面其它文本。
+  依赖内容脚本将 emoji 文本用 <span class="noto-emoji-glyph"> 包裹。
+  要求系统已安装 “Noto Color Emoji”。
+*/
+
+html.noto-emoji-enabled .noto-emoji-glyph {
+  font-family: 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+}
+
+/* 避免代码块等区域被包裹时视觉异常（通常不会包裹这些区域） */
+pre .noto-emoji-glyph,
+code .noto-emoji-glyph,
+kbd .noto-emoji-glyph,
+samp .noto-emoji-glyph,
+tt .noto-emoji-glyph {
+  font-family: inherit !important;
+}
