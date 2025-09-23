@@ -23,5 +23,4 @@
 ## Known Issues / 已知问题
 - Very dynamic pages may momentarily show system emoji before the wrapper updates the DOM.
 - 动态刷新频繁的页面可能短暂出现系统表情，脚本会很快重新包裹。
-- Bundled fonts increase the extension size (~15 MB) and may render as monochrome on some legacy Windows builds.
-- 内置字体会增加扩展体积（约 15 MB），且在部分旧版 Windows 上可能显示为黑白。
+

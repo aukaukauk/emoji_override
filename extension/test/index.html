@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emoji Override — Test Page</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { margin: 0; padding: 24px; font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      h1 { margin: 0 0 8px 0; font-size: 22px; }
+      p { margin: 0 0 16px 0; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin: 16px 0; }
+      .box { padding: 12px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+      .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+      button { padding: 6px 12px; border-radius: 6px; border: 1px solid #888; background: #f2f2f2; cursor: pointer; }
+      button:hover { background: #e9e9e9; }
+      pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 14px; }
+      footer { margin-top: 28px; font-size: 12px; opacity: 0.75; }
+    </style>
+  </head>
+  <body>
+    <h1>Emoji Override — Test Page</h1>
+    <p>
+      Use this page to quickly verify that emoji render with Google's Noto Emoji while regular text keeps the site's font.
+      Make sure the extension is loaded and enabled. For local file testing, allow the extension to access file URLs in Chrome.
+    </p>
+
+    <h2>Common Faces</h2>
+    <div class="grid">
+      <div class="box">😀 😃 😄 😁 😆 😅 😂 🤣 😊 😇 🙂 🙃 😉 😌 😍 🥰 😘 😗 😙 😚 😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🤩 🥳 😏 😒 😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 😡 🤬</div>
+      <div class="box">🤯 😳 🥵 🥶 😱 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄 😯 😦 😧 😮 😲 🥱 😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕</div>
+    </div>
+
+    <h2>Hands + Skin Tones</h2>
+    <div class="grid">
+      <div class="box">👍🏻 👍🏼 👍🏽 👍🏾 👍🏿 👋🏻 👋🏼 👋🏽 👋🏾 👋🏿 🙌🏻 🙌🏼 🙌🏽 🙌🏾 🙌🏿</div>
+    </div>
+
+    <h2>Flags + Transport</h2>
+    <div class="grid">
+      <div class="box">🇨🇳 🇺🇸 🇯🇵 🇬🇧 🇪🇺 🚗 🚕 🛺 🚙 🚌 🚎 🏎️ 🚓 🚑 🚒 🚚 🚛 🚜 🚲 🛴 🛵 🏍️ ✈️ 🛫 🛬 🚀 🚁</div>
+    </div>
+
+    <h2>Monospace Code Block (should stay unchanged)</h2>
+    <pre><code>const msg = "Hello 😀";
+console.log(msg);
+// This block should keep its monospace font and not be overridden.
+    </code></pre>
+
+    <h2>Dynamic Content</h2>
+    <div class="row">
+      <button id="add-emoji">Add dynamic emoji</button>
+      <div id="dynamic-target" class="box" style="flex:1; min-height: 44px;"></div>
+    </div>
+
+    <footer>
+      Tip: Toggle the extension on/off and try the per-site block in the popup. Then refresh this page to compare.
+    </footer>
+
+    <script>
+      (function(){
+        const btn = document.getElementById('add-emoji');
+        const target = document.getElementById('dynamic-target');
+        const samples = [
+          '😀','🙂','😉','😍','🥳','🤔','🙄','😴','🤯','🥵','🥶','🤒','🤕','👍🏻','👍🏽','👍🏿','🚀','✈️','🏍️','⛵','🇨🇳','🇺🇸','🇯🇵','🇬🇧'
+        ];
+        let i = 0;
+        btn.addEventListener('click', () => {
+          const span = document.createElement('span');
+          span.textContent = ' ' + samples[i % samples.length] + ' ';
+          target.appendChild(span);
+          i++;
+        });
+      })();
+    </script>
+  </body>
+  </html>
+
