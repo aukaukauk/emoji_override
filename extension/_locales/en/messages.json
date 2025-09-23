@@ -1,0 +1,6 @@
+﻿{
+  "appName": { "message": "Emoji Override" },
+  "shortName": { "message": "Emoji Override" },
+  "appDesc": { "message": "Prefer Google's Noto Emoji on the web without changing site fonts. One-click toggle and per-site block." },
+  "actionTitle": { "message": "Emoji Override" }
+}

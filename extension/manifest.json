@@ -1,14 +1,14 @@
 ﻿{
     "manifest_version":  3,
-    "name":  "Noto Emoji Override",
-    "description":  "Prefer Google\u0027s Noto Emoji on all pages to replace Windows\u0027 default emoji appearance.",
+    "name":  "__MSG_appName__",
+    "description":  "__MSG_appDesc__",
     "version":  "1.0.0",
     "permissions":  [
                         "storage",
                         "tabs"
                     ],
     "action":  {
-                   "default_title":  "Noto Emoji Override",
+                   "default_title":  "__MSG_actionTitle__",
                    "default_popup":  "popup/popup.html",
                    "default_icon":  {
                                         "24":  "icons/icon32.png",
@@ -42,9 +42,10 @@
                                                      ]
                                      }
                                  ],
-    "short_name":  "Emoji Override",
+    "short_name":  "__MSG_shortName__",
     "icons":  {
                   "128":  "icons/icon128.png",
                   "32":  "icons/icon32.png"
-              }
+              },
+    "default_locale":  "en"
 }
